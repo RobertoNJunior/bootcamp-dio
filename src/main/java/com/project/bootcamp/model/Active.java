@@ -1,83 +1,73 @@
 package com.project.bootcamp.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.Objects;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_active")
-public class Active implements Serializable {
+public class Active {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Long id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    @Column(name = "price")
-    private BigDecimal price;
+	@Column(name = "price")
+	private Double price;
 
-    @Column(name = "variation")
-    private BigDecimal variation;
+	@Column(name = "variation")
+	private Double variation;
 
-    @Column(name = "date")
-    @Temporal(TemporalType.DATE)
-    private Date date;
+	@Column(name = "date")
+	private LocalDate date;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public BigDecimal getVariation() {
-        return variation;
-    }
+	public Double getVariation() {
+		return variation;
+	}
 
-    public void setVariation(BigDecimal variation) {
-        this.variation = variation;
-    }
+	public void setVariation(Double variation) {
+		this.variation = variation;
+	}
 
-    public Date getDate() {
-        return date;
-    }
+	public LocalDate getDate() {
+		return date;
+	}
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Active active = (Active) o;
-        return Objects.equals(id, active.id) && Objects.equals(name, active.name) && Objects.equals(price, active.price) && Objects.equals(variation, active.variation) && Objects.equals(date, active.date);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, price, variation, date);
-    }
 }

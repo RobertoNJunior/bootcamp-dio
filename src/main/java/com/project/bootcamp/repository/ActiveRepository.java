@@ -1,13 +1,13 @@
 package com.project.bootcamp.repository;
 
-import com.project.bootcamp.model.Active;
-import com.project.bootcamp.model.dto.ActiveDTO;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
+import com.project.bootcamp.model.Active;
 
 @Repository
 public interface ActiveRepository extends JpaRepository<Active, Long> {
