@@ -1,14 +1,14 @@
 package com.project.bootcamp.model.dto;
 
+import java.time.LocalDate;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
 
-public class ActiveDTO implements Serializable {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class ActiveDTO {
 
     private Long id;
 
@@ -16,15 +16,17 @@ public class ActiveDTO implements Serializable {
     private String name;
 
     @NotNull
-    @DecimalMin(value = "1.0")
+    @DecimalMin(value = "0.00")
     @Digits(integer = 6, fraction = 2)
-    private BigDecimal price;
+    private Double price;
 
     @NotNull
-    private BigDecimal variation;
+    @Digits(integer = 3, fraction = 2)
+    private Double variation;
 
     @NotNull
-    private Date date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate date;
 
     public Long getId() {
         return id;
@@ -42,27 +44,27 @@ public class ActiveDTO implements Serializable {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+    public Double getPrice() {
+		return price;
+	}
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public BigDecimal getVariation() {
-        return variation;
-    }
+	public Double getVariation() {
+		return variation;
+	}
 
-    public void setVariation(BigDecimal variation) {
-        this.variation = variation;
-    }
+	public void setVariation(Double variation) {
+		this.variation = variation;
+	}
 
-    public Date getDate() {
+	public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }
