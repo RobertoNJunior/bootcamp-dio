@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_active")
-public class Active {
+@Table(name = "tb_stock")
+public class Stock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

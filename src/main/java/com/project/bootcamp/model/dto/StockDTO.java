@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class ActiveDTO {
+public class StockDTO {
 
     private Long id;
 
