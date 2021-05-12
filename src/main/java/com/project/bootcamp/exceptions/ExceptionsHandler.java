@@ -13,17 +13,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ExceptionsHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
-    protected ResponseEntity<Object> handleSecurity(NotFoundException ex, WebRequest request) {
-        return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    protected ResponseEntity<ExceptionResponse> handleSecurity(NotFoundException ex, WebRequest request) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionResponse(ex.getMessage()));
     }
 
     @ExceptionHandler(BusinessException.class)
-    protected ResponseEntity<Object> handleSecurity(BusinessException ex, WebRequest request) {
-        return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.UNPROCESSABLE_ENTITY, request);
+    protected ResponseEntity<ExceptionResponse> handleSecurity(BusinessException ex, WebRequest request) {
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ExceptionResponse(ex.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity<Object> handleSecurity(Exception ex, WebRequest request) {
-        return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    protected ResponseEntity<ExceptionResponse> handleSecurity(Exception ex, WebRequest request) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ExceptionResponse(ex.getMessage()));
     }
 }
