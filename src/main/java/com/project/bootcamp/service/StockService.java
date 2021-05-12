@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,7 @@ public class StockService {
 
     @Transactional
     public StockDTO save(StockDTO dto) {
-        Optional<Stock> optionalEntity = repository.findByName(dto.getName());
+        Optional<Stock> optionalEntity = repository.findByNameAndDate(dto.getName(), dto.getDate());
         if (optionalEntity.isPresent()) {
             throw new BusinessException(MessageUtils.ACTIVE_ALREADY_EXISTS);
         }
@@ -38,7 +39,7 @@ public class StockService {
 
     @Transactional
     public StockDTO update(StockDTO dto) {
-        Optional<Stock> optionalEntity = repository.findByName(dto.getName(), dto.getId());
+        Optional<Stock> optionalEntity = repository.findByName(dto.getName(), dto.getId(), dto.getDate());
         if (optionalEntity.isPresent()) {
             throw new BusinessException(MessageUtils.ACTIVE_ALREADY_EXISTS);
         }
